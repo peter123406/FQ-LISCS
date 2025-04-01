@@ -75,7 +75,8 @@ class Intsigmoid(nn.Module):
         
         baoliu_bit= (baoliu_bit & mask_upper_bit) | (threshold_bit & ~mask_upper_bit)
         scaling_factor=scaling_factor/2**(23-baoliu_bit)        
-
+        return x, scaling_factor   
+        
     def forward(self, x, scaling_factor=None):
 
         x,scaling_factor=self.cut_input(x,scaling_factor)
